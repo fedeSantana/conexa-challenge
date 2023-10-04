@@ -25,8 +25,6 @@ export async function selectCharacter({ character } : { character : Character}){
     cookieStore.set({
     name: `character${ammountCharacters}`,
     value: character.url,
-    httpOnly: true,
-    path: '/',
   })
 }
 
