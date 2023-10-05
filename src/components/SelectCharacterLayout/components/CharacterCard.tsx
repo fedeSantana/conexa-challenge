@@ -55,19 +55,19 @@ function CharacterCard({
 			<button
 				disabled={disabled}
 				type="submit"
-				className={`bg-white rounded-lg shadow-md p-4 max-w-[156px] animate-fade disabled:opacity-25`}
+				className={`bg-white rounded-lg shadow-md p-2 md:p-4 w-[124px] md:w-[142px] animate-fade disabled:opacity-25`}
 			>
 				<Image
-					className="rounded w-156 h-156"
+					className="rounded w-[124px] h-[124px] md:w-[110px] md:h-[110px]"
 					src={character.image}
 					alt={""}
 					width="156"
 					height="156"
 				/>
-				<h2 className="text-gray-800 text-xl font-semibold mt-4 truncate">
+				<h2 className="text-gray-800 text-m font-semibold mt-2 truncate">
 					{character.name}
 				</h2>
-				<p className="text-gray-600 mt-2">
+				<p className="text-gray-600 text-xs truncate">
 					{character.gender} - {character.status}
 				</p>
 			</button>

@@ -72,14 +72,14 @@ export default async function SelectCharacterLayout({
 	const selectedCharacters = await getSelectedCharacters();
 
 	return (
-		<main className="flex max-h-screen flex-col items-center justify-between mt-4">
-			<h1 className=" flex text-4xl font-bold text-grey-800 pb-12 items-center justify-center">
-				{" "}
-				Intersección de personajes{" "}
+		<main className="flex max-h-screen flex-col items-center justify-between md:mt-4">
+			<h1 className=" flex p-2 text-4xl font-bold text-grey-800 pb-4 md:pb-12 items-center justify-center">
+				Intersección de personajes
 			</h1>
-			<div className="flex w-screen">
+			<p className="mb-4 font-semibold text-lg px-2"> Selecciona dos personajes para ver en qué capítulos coinciden</p>
+			<div className="flex w-screen flex-col-reverse md:flex-row px-2">
 				<div className="ml-4 mr-4 max-w-xs">
-					<p className="mb-2"> Personajes seleccionados </p>
+					<p className="mb-2 text-xl font-semibold"> Personajes seleccionados </p>
 					{selectedCharacters.map((selectedCharacter, index) => {
 						return (
 							<>
@@ -99,7 +99,7 @@ export default async function SelectCharacterLayout({
 					})}
 					<CommonButton selectedCharacters={selectedCharacters} />
 				</div>
-				<div className="flex gap-4 w-screen flex-wrap">
+				<div className="flex gap-4 w-screen md:flex-wrap overflow-x-auto pb-2 ">
 					{charactersData.results.map((character) => {
 						const characterIsSelected = selectedCharacters.some(
 								(selectedCharacter) =>
