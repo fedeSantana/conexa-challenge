@@ -1,4 +1,3 @@
-import { selectCharacter } from "@/services/characterSelector";
 import { Character } from "@/services/getCharacters";
 import Image from "next/image";
 
@@ -15,8 +14,8 @@ function CharacterCard({
 }) {
   if (condensed) {
     return (
-      <div className="flex mb-2 max-h-[154px] max-w-[256px]">
-        <div className="flex bg-white rounded-l-lg shadow-md p-2 max-w-[256px]">
+      <div className="flex mb-2 max-h-[154px] min-w-[256px]">
+        <div className="flex bg-white rounded-l-lg shadow-md p-2 w-[256px] truncate">
           <Image
             className="rounded max-w-[64px] max-h-[64px]"
             src={character.image}

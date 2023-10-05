@@ -10,10 +10,6 @@ import Link from "next/link";
 
 export default async function Home() {
   const charactersData = await getCharacters();
-  const cancelAction = async (number: number) => {
-    "use server";
-    removeSelectedCharacter({ number });
-  };
 
   const selectedCharacters = await getSelectedCharacters();
 
@@ -28,16 +24,18 @@ export default async function Home() {
           <p className="mb-2"> Personajes seleccionados </p>
           {selectedCharacters.map((selectedCharacter, index) => {
             return (
+              <>
               <CharacterCard
                 key={selectedCharacter.id}
                 character={selectedCharacter}
                 cancelAction={async () => {
-                  "use server";
-                  cancelAction(index);
+                  "use server"
+                  removeSelectedCharacter({ index: index });
                 }}
                 condensed
               />
-            );
+              </>
+            )
           })}
           {selectedCharacters.length === 2 && (
             <Link
