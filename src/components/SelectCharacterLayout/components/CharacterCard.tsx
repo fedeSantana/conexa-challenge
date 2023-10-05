@@ -1,6 +1,5 @@
 import { Character } from "@/services/getCharacters";
 import Image from "next/image";
-import { experimental_useFormStatus } from "react-dom";
 
 function CharacterCard({
   character,
