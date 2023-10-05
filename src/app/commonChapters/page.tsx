@@ -28,9 +28,9 @@ export function ShortEpisodeName(url: string) {
 	return url.replace("https://rickandmortyapi.com/api/episode/", "");
 }
 
-function EpisodeList({ episodes }: { episodes: string[] }) {
+function EpisodeList({ episodes, testId}: { episodes: string[], testId?: string }) {
 	return (
-		<ul className="max-h-[10%]  overflow-x-auto max-w-full flex md:block md:overflow-y-auto ">
+		<ul data-testId={testId}  className="max-h-[10%]  overflow-x-auto max-w-full flex md:block md:overflow-y-auto ">
 			{episodes.map((episode) => {
 				return (
 					<li className="text-xl font-bold mb-2 px-2 md:p-0 " key={episode}>
@@ -103,7 +103,7 @@ export default async function CharactersComparison() {
 				<div className="flex flex-col p-2 md:order-[0] order-[-1]">
 					<p className="text-xl font-semibold mb-2 md:pt-[198px]"> Episodios que comparten </p>
 					{episodesInCommon && (
-						<EpisodeList episodes={episodesInCommon} />
+						<EpisodeList testId={'sharedEpisodes'} episodes={episodesInCommon} />
 					)}
 				</div>
 				<CharacterAndEpisodes character={selectedCharacters[1]} />

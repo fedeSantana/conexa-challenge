@@ -18,7 +18,10 @@ function CharacterCard({
 
 	if (condensed) {
 		return (
-			<div className="flex mb-2 max-h-[154px] min-w-[256px] animate-fade">
+			<div 
+			className="flex mb-2 max-h-[154px] min-w-[256px] animate-fade "
+			data-testid={character.name}
+>
 				<div className="flex bg-white rounded-l-lg shadow-md p-2 w-[256px] truncate">
 					<Image
 						className="rounded max-w-[64px] max-h-[64px]"
@@ -54,6 +57,7 @@ function CharacterCard({
 		<form action={action}>
 			<button
 				disabled={disabled}
+				data-testid={character.name}
 				type="submit"
 				className={`bg-white rounded-lg shadow-md p-2 md:p-4 w-[124px] md:w-[142px] animate-fade disabled:opacity-25`}
 			>
