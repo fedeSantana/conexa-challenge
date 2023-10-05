@@ -7,9 +7,11 @@ function CharacterCard({
 	condensed,
 	cancelAction,
 	action,
+	disabled
 }: {
 	character: Character;
 	condensed?: boolean;
+	disabled?: boolean;
 	cancelAction?: () => void;
 	action?: () => void;
 }) {
@@ -51,8 +53,9 @@ function CharacterCard({
 	return (
 		<form action={action}>
 			<button
+				disabled={disabled}
 				type="submit"
-				className="bg-white rounded-lg shadow-md p-4 max-w-[156px] animate-fade"
+				className={`bg-white rounded-lg shadow-md p-4 max-w-[156px] animate-fade disabled:opacity-25`}
 			>
 				<Image
 					className="rounded w-156 h-156"

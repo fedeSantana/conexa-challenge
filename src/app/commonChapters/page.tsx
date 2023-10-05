@@ -1,4 +1,4 @@
-import CharacterCard from "@/components/CharacterCard";
+import CharacterCard from "@/components/SelectCharacterLayout/components/CharacterCard";
 import { getSelectedCharacters } from "@/services/characterSelector";
 import { Character } from "@/services/getCharacters";
 import Link from "next/link";
@@ -6,9 +6,9 @@ import Link from "next/link";
 /**
  * Get the intersection of two arrays.
  *
- * @param {string[]} array1 - The first array of episodes.
- * @param {string[]} array2 - The second array of episodes.
- * @returns {string[]} - A new array containing the intersection of episodes.
+ * @param {string[]} selectedCharacters - An array with only two characters
+ * @returns {string[]} - A new array containing the intersection of episodes, if the input array
+ * has a different value than two, the intersection gives null.
  */
 export function getIntersectionOfEpisodes(
 	selectedCharacters: Character[]

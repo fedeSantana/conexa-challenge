@@ -1,6 +1,6 @@
 function Loading(){
     return <div>
-        holis
+        Cargando...
     </div>
 }
 
