@@ -10,7 +10,7 @@ import Link from "next/link";
  * @param {string[]} array2 - The second array of episodes.
  * @returns {string[]} - A new array containing the intersection of episodes.
  */
-function getIntersectionOfEpisodes(
+export function getIntersectionOfEpisodes(
 	selectedCharacters: Character[]
 ): string[] | null {
 	if (selectedCharacters.length < 2) {
@@ -43,7 +43,6 @@ export default async function CharactersComparison() {
 						{" "}
 						Ver episodios compartidos{" "}
 					</h1>
-					<div> luna 1 </div>
 				</div>
 				<h2> Tenes que seleccionar al menos dos personajes </h2>
 			</div>

@@ -38,7 +38,7 @@ export type Status = "Alive" | "unknown" | "Dead";
 
 const baseUrl = "https://rickandmortyapi.com/api";
 
-async function getCharacters(page: string = "1") {
+async function getCharacters(page: number = 1) {
   const response = await fetch(`${baseUrl}/character?page=${page}`);
   const data = (await response.json()) as CharactersMetadata;
 
