@@ -13,23 +13,23 @@ import { cookies } from "next/headers";
  * @param {Character} options.character - The character to be selected.
  */
 export async function selectCharacter({ character }: { character: Character }) {
-	const cookieStore = cookies();
+  const cookieStore = cookies();
 
-	const hasCharacterAChoosen = cookieStore.has("character0");
-	const hasCharacterBChoosen = cookieStore.has("character1");
+  const hasCharacterAChoosen = cookieStore.has("character0");
+  const hasCharacterBChoosen = cookieStore.has("character1");
 
-	if (hasCharacterAChoosen && hasCharacterBChoosen) {
-		throw new Error("It's not possible to select three characters");
-	}
+  if (hasCharacterAChoosen && hasCharacterBChoosen) {
+    throw new Error("It's not possible to select three characters");
+  }
 
-	if (!hasCharacterAChoosen) {
-		cookieStore.set({ name: "character0", value: character.url });
-		return;
-	}
+  if (!hasCharacterAChoosen) {
+    cookieStore.set({ name: "character0", value: character.url });
+    return;
+  }
 
-	if (!hasCharacterBChoosen) {
-		cookieStore.set({ name: "character1", value: character.url });
-	}
+  if (!hasCharacterBChoosen) {
+    cookieStore.set({ name: "character1", value: character.url });
+  }
 }
 
 /**
@@ -40,18 +40,18 @@ export async function selectCharacter({ character }: { character: Character }) {
  * @returns {Promise<void>} A promise that resolves when the character is successfully removed.
  */
 export async function removeSelectedCharacter({ index }: { index: number }) {
-	const cookieStore = cookies();
-	if (index === 0) {
-		const character1 = cookieStore.get("character1")?.value;
-		if (character1) {
-			cookieStore.set({ name: "character0", value: character1 });
-			cookieStore.delete("character1");
-		} else {
-			cookieStore.delete("character0");
-		}
-	} else {
-		cookieStore.delete("character1");
-	}
+  const cookieStore = cookies();
+  if (index === 0) {
+    const character1 = cookieStore.get("character1")?.value;
+    if (character1) {
+      cookieStore.set({ name: "character0", value: character1 });
+      cookieStore.delete("character1");
+    } else {
+      cookieStore.delete("character0");
+    }
+  } else {
+    cookieStore.delete("character1");
+  }
 }
 
 /**
@@ -60,27 +60,27 @@ export async function removeSelectedCharacter({ index }: { index: number }) {
  * @returns {Promise<Character[]>} A promise that resolves to an array of selected characters
  */
 export async function getSelectedCharacters() {
-	const cookieStore = cookies();
-	const cookieA = cookieStore.get("character0");
-	const cookieB = cookieStore.get("character1");
+  const cookieStore = cookies();
+  const cookieA = cookieStore.get("character0");
+  const cookieB = cookieStore.get("character1");
 
-	const cookiesCharacters = [cookieA, cookieB].filter(
-		(cookie) => cookie != undefined && cookie.value != ""
-	) as RequestCookie[];
+  const cookiesCharacters = [cookieA, cookieB].filter(
+    (cookie) => cookie != undefined && cookie.value != "",
+  ) as RequestCookie[];
 
-	if (cookiesCharacters.length === 0) {
-		return [];
-	}
+  if (cookiesCharacters.length === 0) {
+    return [];
+  }
 
-	const charactersResponse = await Promise.all(
-		cookiesCharacters.map((cookie) => {
-			return fetch(cookie.value);
-		})
-	);
+  const charactersResponse = await Promise.all(
+    cookiesCharacters.map((cookie) => {
+      return fetch(cookie.value);
+    }),
+  );
 
-	return await Promise.all(
-		charactersResponse.map((response) => {
-			return response.json() as Promise<Character>;
-		})
-	);
+  return await Promise.all(
+    charactersResponse.map((response) => {
+      return response.json() as Promise<Character>;
+    }),
+  );
 }
