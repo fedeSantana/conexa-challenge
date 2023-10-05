@@ -101,7 +101,7 @@ export default async function CharactersComparison() {
 			<div className="flex flex-col md:flex-row place-content-between m-auto w-full">
 				<CharacterAndEpisodes character={selectedCharacters[0]} />
 				<div className="flex flex-col p-2 md:order-[0] order-[-1]">
-					<p className="text-xl font-semibold mb-2 md:pt-[198px]"> Episodios compartidos </p>
+					<p className="text-xl font-semibold mb-2 md:pt-[198px]"> Lista de episodios compartidos </p>
 					{episodesInCommon && (
 						<EpisodeList episodes={episodesInCommon} />
 					)}
